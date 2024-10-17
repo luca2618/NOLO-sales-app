@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for the range input */
+input[type="range"] {
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 100%;
+  background: transparent;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: linear-gradient(to right, #009D86 var(--range-progress), #E5E7EB var(--range-progress));
+  border-radius: 25px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #009D86;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -6px;
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: #E5E7EB;
+  border-radius: 25px;
+}
+
+input[type="range"]::-moz-range-progress {
+  background-color: #009D86;
+  height: 4px;
+  border-radius: 25px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #009D86;
+  cursor: pointer;
+}
+
+input[type="range"]::-ms-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+input[type="range"]::-ms-fill-lower {
+  background: #009D86;
+  border-radius: 25px;
+}
+
+input[type="range"]::-ms-fill-upper {
+  background: #E5E7EB;
+  border-radius: 25px;
+}
+
+input[type="range"]::-ms-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #009D86;
+  cursor: pointer;
+}
+
+/* Custom styles for the number input */
+input[type="number"]:focus {
+  border-color: #009D86;
+  box-shadow: 0 0 0 2px rgba(0, 157, 134, 0.2);
+}
