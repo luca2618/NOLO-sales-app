@@ -68,7 +68,7 @@ function App() {
         <div className="mt-8 p-4 bg-blue-50 rounded-lg">
           <h2 className="text-xl font-semibold mb-2 text-blue-800">Results</h2>
           <p className="text-lg">
-            Estimated New Total Sales: <span className="font-bold text-green-600">{newTotalSales.toLocaleString('da-DK', { style: 'currency', currency: 'DKK' })}</span>
+            Estimated New Total Sales2: <span className="font-bold text-green-600">{newTotalSales.toLocaleString('da-DK', { style: 'currency', currency: 'DKK' })}</span>
           </p>
           <p className="text-lg">
             Percentage Increase: <span className="font-bold text-green-600">{percentageIncrease.toFixed(2)}%</span>
