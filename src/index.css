@@ -17,8 +17,8 @@ input[type="range"]:focus {
 
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 100px;
-  width: 100px;
+  height: 24px;
+  width: 24px;
   border-radius: 50%;
   background: #009D86;
   cursor: pointer;
@@ -29,8 +29,8 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"]::-moz-range-thumb {
-  height: 100px;
-  width: 100px;
+  height: 24px;
+  width: 24px;
   border-radius: 50%;
   background: #009D86;
   cursor: pointer;
@@ -40,8 +40,8 @@ input[type="range"]::-moz-range-thumb {
 }
 
 input[type="range"]::-ms-thumb {
-  height: 100px;
-  width: 100px;
+  height: 24px;
+  width: 24px;
   border-radius: 50%;
   background: #009D86;
   cursor: pointer;
