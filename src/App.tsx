@@ -35,7 +35,7 @@ function App() {
           />
           
           <Slider
-            label="Average Price of Water and Soft Drinks (DKK)"
+            label="Gennemsnitspris på vand og sodavand (DKK)"
             value={avgPrice}
             onChange={setAvgPrice}
             min={1}
@@ -45,7 +45,7 @@ function App() {
           />
           
           <Slider
-            label="Price of Average Premium Non-Alcoholic Beverage (DKK)"
+            label="Pris på gennemsnitlig premium ikke-alkoholisk drik (DKK)"
             value={premiumPrice}
             onChange={setPremiumPrice}
             min={1}
@@ -55,7 +55,7 @@ function App() {
           />
 
           <Slider
-            label="Conversion Rate (%)"
+            label="Konversion af salg(%)"
             value={conversion}
             onChange={setConversion}
             min={0}
@@ -68,10 +68,10 @@ function App() {
         <div className="mt-8 p-4 bg-blue-50 rounded-lg">
           <h2 className="text-xl font-semibold mb-2 text-blue-800">Results</h2>
           <p className="text-lg">
-            Estimated New Total Sales2: <span className="font-bold text-green-600">{newTotalSales.toLocaleString('da-DK', { style: 'currency', currency: 'DKK' })}</span>
+            Estimeret salg: <span className="font-bold text-green-600">{newTotalSales.toLocaleString('da-DK', { style: 'currency', currency: 'DKK' })}</span>
           </p>
           <p className="text-lg">
-            Percentage Increase: <span className="font-bold text-green-600">{percentageIncrease.toFixed(2)}%</span>
+          Procentvis stigning: <span className="font-bold text-green-600">{percentageIncrease.toFixed(2)}%</span>
           </p>
         </div>
       </div>
