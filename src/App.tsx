@@ -25,7 +25,7 @@ function App() {
         
         <div className="space-y-6">
           <Slider
-            label="Total Sales of Water and Soft Drinks (DKK)"
+            label="Samlet salg af vand og sodavand (DKK)"
             value={totalSales}
             onChange={setTotalSales}
             min={0}
