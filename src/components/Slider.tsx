@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface SliderProps {
   label: string;
@@ -12,17 +12,29 @@ interface SliderProps {
 
 export const Slider: React.FC<SliderProps> = ({ label, value, onChange, min, max, step, icon }) => {
   const rangeRef = useRef<HTMLInputElement>(null);
+  const [displayValue, setDisplayValue] = useState(value);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value === '' ? min : parseFloat(e.target.value);
-    if (!isNaN(newValue) && newValue >= min && newValue <= max) {
-      onChange(newValue);
+    const newValue = e.target.value === '' ? 0 : parseFloat(e.target.value);
+    if (!isNaN(newValue)) {
+      setDisplayValue(newValue);
+      onChange(Math.max(newValue, min));
     }
   };
 
+  const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = parseFloat(e.target.value);
+    setDisplayValue(newValue);
+    onChange(newValue);
+  };
+
+  useEffect(() => {
+    setDisplayValue(value);
+  }, [value]);
+
   useEffect(() => {
     if (rangeRef.current) {
-      const progress = ((value - min) / (max - min)) * 100;
+      const progress = ((Math.min(value, max) - min) / (max - min)) * 100;
       rangeRef.current.style.setProperty('--range-progress', `${progress}%`);
     }
   }, [value, min, max]);
@@ -34,26 +46,34 @@ export const Slider: React.FC<SliderProps> = ({ label, value, onChange, min, max
         <label className="text-sm font-medium text-gray-700">{label}</label>
       </div>
       <div className="flex items-center space-x-4">
-        <input
-          ref={rangeRef}
-          type="range"
-          min={min}
-          max={max}
-          step={step}
-          value={value}
-          onChange={handleInputChange}
-          className="w-full"
-        />
+        <div className="relative w-full">
+          <div className="absolute top-1/2 left-0 right-0 -mt-1 h-2 bg-gray-200 rounded-full pointer-events-none"></div>
+          <div 
+            className="absolute top-1/2 left-0 -mt-1 h-2 bg-blue-500 rounded-full pointer-events-none" 
+            style={{ width: `${((Math.min(value, max) - min) / (max - min)) * 100}%` }}
+          ></div>
+          <input
+            ref={rangeRef}
+            type="range"
+            min={min}
+            max={max}
+            step={step}
+            value={Math.min(value, max)}
+            onChange={handleRangeChange}
+            className="relative z-10 w-full appearance-none bg-transparent"
+          />
+        </div>
         <input
           type="number"
-          value={value}
+          value={displayValue === 0 ? '' : displayValue}
           onChange={handleInputChange}
           onBlur={() => {
-            if (value < min) onChange(min);
-            if (value > max) onChange(max);
+            if (displayValue < min) {
+              setDisplayValue(min);
+              onChange(min);
+            }
           }}
           min={min}
-          max={max}
           step={step}
           className="w-20 px-2 py-1 text-right border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-opacity-50"
         />

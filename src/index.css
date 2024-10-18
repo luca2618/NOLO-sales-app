@@ -8,50 +8,62 @@ input[type="range"] {
   margin: 10px 0;
   width: 100%;
   background: transparent;
+  padding: 15px 0; /* Increase padding for better touch area */
 }
 
 input[type="range"]:focus {
   outline: none;
 }
 
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: #009D86;
+  cursor: pointer;
+  margin-top: -10px; /* Adjust for the new track height */
+  box-shadow: 0 0 2px 0 #555;
+  position: relative;
+  z-index: 2;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: #009D86;
+  cursor: pointer;
+  box-shadow: 0 0 2px 0 #555;
+  position: relative;
+  z-index: 2;
+}
+
+input[type="range"]::-ms-thumb {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: #009D86;
+  cursor: pointer;
+  box-shadow: 0 0 2px 0 #555;
+  position: relative;
+  z-index: 2;
+}
+
 input[type="range"]::-webkit-slider-runnable-track {
   width: 100%;
   height: 4px;
   cursor: pointer;
-  background: linear-gradient(to right, #009D86 var(--range-progress), #E5E7EB var(--range-progress));
+  background: transparent;
   border-radius: 25px;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: #009D86;
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -6px;
 }
 
 input[type="range"]::-moz-range-track {
   width: 100%;
   height: 4px;
   cursor: pointer;
-  background: #E5E7EB;
+  background: transparent;
   border-radius: 25px;
-}
-
-input[type="range"]::-moz-range-progress {
-  background-color: #009D86;
-  height: 4px;
-  border-radius: 25px;
-}
-
-input[type="range"]::-moz-range-thumb {
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: #009D86;
-  cursor: pointer;
 }
 
 input[type="range"]::-ms-track {
@@ -63,26 +75,19 @@ input[type="range"]::-ms-track {
   color: transparent;
 }
 
-input[type="range"]::-ms-fill-lower {
-  background: #009D86;
-  border-radius: 25px;
-}
-
-input[type="range"]::-ms-fill-upper {
-  background: #E5E7EB;
-  border-radius: 25px;
-}
-
-input[type="range"]::-ms-thumb {
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: #009D86;
-  cursor: pointer;
-}
-
 /* Custom styles for the number input */
 input[type="number"]:focus {
   border-color: #009D86;
   box-shadow: 0 0 0 2px rgba(0, 157, 134, 0.2);
+}
+
+/* Remove spinner buttons from number input */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
