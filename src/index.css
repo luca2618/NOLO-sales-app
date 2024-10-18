@@ -91,3 +91,28 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  input[type="range"].slider-input {
+    padding: 20px 0;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    height: 36px;
+    width: 36px;
+    margin-top: -16px; /* Adjust this value for mobile */
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    height: 36px;
+    width: 36px;
+  }
+
+  input[type="range"]::-ms-thumb {
+    height: 36px;
+    width: 36px;
+  }
+
+}
