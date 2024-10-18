@@ -17,8 +17,8 @@ input[type="range"]:focus {
 
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 24px;
-  width: 24px;
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
   background: #009D86;
   cursor: pointer;
@@ -29,8 +29,8 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"]::-moz-range-thumb {
-  height: 24px;
-  width: 24px;
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
   background: #009D86;
   cursor: pointer;
@@ -40,8 +40,8 @@ input[type="range"]::-moz-range-thumb {
 }
 
 input[type="range"]::-ms-thumb {
-  height: 24px;
-  width: 24px;
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
   background: #009D86;
   cursor: pointer;
@@ -92,27 +92,3 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-
-/* Mobile-specific styles */
-@media only screen and (max-width: 768px) {
-  input[type="range"].slider-input {
-    padding: 20px 0;
-  }
-
-  input[type="range"]::-webkit-slider-thumb {
-    height: 100px;
-    width: 100px;
-    margin-top: -16px; /* Adjust this value for mobile */
-  }
-
-  input[type="range"]::-moz-range-thumb {
-    height: 100px;
-    width: 100px;
-  }
-
-  input[type="range"]::-ms-thumb {
-    height: 100px;
-    width: 100px;
-  }
-
-}
