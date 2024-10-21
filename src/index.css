@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* Custom styles for the range input */
-input[type="range"] {
+input[type='range'] {
   -webkit-appearance: none;
   margin: 10px 0;
   width: 100%;
@@ -11,16 +11,16 @@ input[type="range"] {
   padding: 15px 0; /* Increase padding for better touch area */
 }
 
-input[type="range"]:focus {
+input[type='range']:focus {
   outline: none;
 }
 
-input[type="range"]::-webkit-slider-thumb {
+input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 24px;
   width: 24px;
   border-radius: 50%;
-  background: #009D86;
+  background: #009d86;
   cursor: pointer;
   margin-top: -10px; /* Adjust for the new track height */
   box-shadow: 0 0 2px 0 #555;
@@ -28,29 +28,29 @@ input[type="range"]::-webkit-slider-thumb {
   z-index: 2;
 }
 
-input[type="range"]::-moz-range-thumb {
+input[type='range']::-moz-range-thumb {
   height: 24px;
   width: 24px;
   border-radius: 50%;
-  background: #009D86;
+  background: #009d86;
   cursor: pointer;
   box-shadow: 0 0 2px 0 #555;
   position: relative;
   z-index: 2;
 }
 
-input[type="range"]::-ms-thumb {
+input[type='range']::-ms-thumb {
   height: 24px;
   width: 24px;
   border-radius: 50%;
-  background: #009D86;
+  background: #009d86;
   cursor: pointer;
   box-shadow: 0 0 2px 0 #555;
   position: relative;
   z-index: 2;
 }
 
-input[type="range"]::-webkit-slider-runnable-track {
+input[type='range']::-webkit-slider-runnable-track {
   width: 100%;
   height: 4px;
   cursor: pointer;
@@ -58,7 +58,7 @@ input[type="range"]::-webkit-slider-runnable-track {
   border-radius: 25px;
 }
 
-input[type="range"]::-moz-range-track {
+input[type='range']::-moz-range-track {
   width: 100%;
   height: 4px;
   cursor: pointer;
@@ -66,7 +66,7 @@ input[type="range"]::-moz-range-track {
   border-radius: 25px;
 }
 
-input[type="range"]::-ms-track {
+input[type='range']::-ms-track {
   width: 100%;
   height: 4px;
   cursor: pointer;
@@ -76,42 +76,42 @@ input[type="range"]::-ms-track {
 }
 
 /* Custom styles for the number input */
-input[type="number"]:focus {
-  border-color: #009D86;
+input[type='number']:focus {
+  border-color: #009d86;
   box-shadow: 0 0 0 2px rgba(0, 157, 134, 0.2);
 }
 
 /* Remove spinner buttons from number input */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
 /* Mobile-specific styles */
 @media (max-width: 768px) {
-  input[type="range"].slider-input {
+  input[type='range'].slider-input {
     padding: 20px 0;
   }
 
-  input[type="range"]::-webkit-slider-thumb {
-    height: 36px;
-    width: 36px;
+  input[type='range']::-webkit-slider-thumb {
+    height: 32px;
+    width: 32px;
     margin-top: -16px; /* Adjust this value for mobile */
   }
 
-  input[type="range"]::-moz-range-thumb {
-    height: 36px;
-    width: 36px;
+  input[type='range']::-moz-range-thumb {
+    height: 32px;
+    width: 32px;
   }
 
-  input[type="range"]::-ms-thumb {
-    height: 36px;
-    width: 36px;
+  input[type='range']::-ms-thumb {
+    height: 32px;
+    width: 32px;
   }
 
   .slider-track {
