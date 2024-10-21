@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Slider } from './components/Slider';
 import { Wine, Beer, Percent } from 'lucide-react';
+import { LanguageToggle } from './components/LanguageToggle';
+import { translations } from './translations';
 
 function App() {
   const [totalSales, setTotalSales] = useState(10000);
@@ -9,6 +11,7 @@ function App() {
   const [conversion, setConversion] = useState(50);
   const [newTotalSales, setNewTotalSales] = useState(0);
   const [percentageIncrease, setPercentageIncrease] = useState(0);
+  const [language, setLanguage] = useState<'en' | 'dk'>('dk');
 
   useEffect(() => {
     const units = totalSales / avgPrice;
@@ -19,22 +22,25 @@ function App() {
     setPercentageIncrease(((newSales - totalSales) / totalSales) * 100);
   }, [totalSales, avgPrice, premiumPrice, conversion]);
 
+  const t = translations[language];
+
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-full">
         <div className="flex justify-center mb-6">
           <img src="logo.png" alt="NOLO Collective Logo" className="h-24" />
+          <LanguageToggle language={language} setLanguage={setLanguage} />
         </div>
         <h1
           className="text-3xl font-bold mb-6 text-center"
           style={{ color: '#009D86' }}
         >
-          Beregn NOLO potentialet her
+          {t.title}
         </h1>
 
         <div className="space-y-6">
           <Slider
-            label="Samlet salg af vand og sodavand (DKK)"
+            label={t.totalSales}
             value={totalSales}
             onChange={setTotalSales}
             min={0}
@@ -44,7 +50,7 @@ function App() {
           />
 
           <Slider
-            label="Gennemsnitspris på vand og sodavand (DKK)"
+            label={t.avgPrice}
             value={avgPrice}
             onChange={setAvgPrice}
             min={1}
@@ -54,7 +60,7 @@ function App() {
           />
 
           <Slider
-            label="Pris på gennemsnitlig premium ikke-alkoholisk drik (DKK)"
+            label={t.premiumPrice}
             value={premiumPrice}
             onChange={setPremiumPrice}
             min={1}
@@ -64,7 +70,7 @@ function App() {
           />
 
           <Slider
-            label="Konversion af salg(%)"
+            label={t.conversion}
             value={conversion}
             onChange={setConversion}
             min={0}
@@ -75,18 +81,20 @@ function App() {
         </div>
 
         <div className="mt-8 p-4 bg-[#009D86] bg-opacity-10 rounded-lg">
-          <h2 className="text-xl font-semibold mb-2 text-[#009D86]">Results</h2>
+          <h2 className="text-xl font-semibold mb-2 text-[#009D86]">
+            {t.results}
+          </h2>
           <p className="text-lg">
-            Estimeret salg:{' '}
+            {t.estimatedSales}:{' '}
             <span className="font-bold text-[#009D86]">
-              {newTotalSales.toLocaleString('da-DK', {
-                style: 'currency',
-                currency: 'DKK',
-              })}
+              {newTotalSales.toLocaleString(
+                language === 'dk' ? 'da-DK' : 'en-US',
+                { style: 'currency', currency: 'DKK' }
+              )}
             </span>
           </p>
           <p className="text-lg">
-            Procentvis stigning:{' '}
+            {t.percentageIncrease}:{' '}
             <span className="font-bold text-[#009D86]">
               {percentageIncrease.toFixed(2)}%
             </span>
