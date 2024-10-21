@@ -27,7 +27,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-full">
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-between items-center mb-6">
           <img src="logo.png" alt="NOLO Collective Logo" className="h-24" />
           <LanguageToggle language={language} setLanguage={setLanguage} />
         </div>
