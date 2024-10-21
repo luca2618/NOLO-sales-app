@@ -94,6 +94,10 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+
+
+
+
 /* Mobile-specific styles */
 @media (max-width: 768px) {
   input[type="range"].slider-input {
