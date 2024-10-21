@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Slider } from './components/Slider';
-import { Wine, Beer, Percent } from 'lucide-react';
+import { Wine, Beer, Percent, DollarSign } from 'lucide-react';
 import { LanguageToggle } from './components/LanguageToggle';
 import { translations } from './translations';
 
@@ -50,7 +50,7 @@ function App() {
               min={0}
               max={100000}
               step={1000}
-              icon={<Beer className="w-6 h-6 text-[#009D86]" />}
+              icon={<DollarSign className="w-6 h-6 text-[#009D86]" />}
             />
 
             <Slider
