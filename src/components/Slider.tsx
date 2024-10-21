@@ -49,7 +49,7 @@ export const Slider: React.FC<SliderProps> = ({ label, value, onChange, min, max
         <div className="relative w-full">
           <div className="absolute top-1/2 left-0 right-0 -mt-1 h-2 bg-gray-200 rounded-full pointer-events-none"></div>
           <div 
-            className="absolute top-1/2 left-0 -mt-1 h-2 bg-blue-500 rounded-full pointer-events-none" 
+            className="absolute top-1/2 left-0 -mt-1 h-2 bg-[#009D86] rounded-full pointer-events-none" 
             style={{ width: `${((Math.min(value, max) - min) / (max - min)) * 100}%` }}
           ></div>
           <input

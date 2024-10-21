@@ -13,7 +13,8 @@ function App() {
   useEffect(() => {
     const units = totalSales / avgPrice;
     const conversionRate = conversion / 100;
-    const newSales = (units * premiumPrice * conversionRate) + ((1 - conversionRate) * totalSales);
+    const newSales =
+      units * premiumPrice * conversionRate + (1 - conversionRate) * totalSales;
     setNewTotalSales(newSales);
     setPercentageIncrease(((newSales - totalSales) / totalSales) * 100);
   }, [totalSales, avgPrice, premiumPrice, conversion]);
@@ -21,8 +22,16 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-full">
-        <h1 className="text-3xl font-bold mb-6 text-center" style={{ color: '#009D86' }}>Beregn NOLO potentialet her</h1>
-        
+        <div className="flex justify-center mb-6">
+          <img src="logo.png" alt="NOLO Collective Logo" className="h-24" />
+        </div>
+        <h1
+          className="text-3xl font-bold mb-6 text-center"
+          style={{ color: '#009D86' }}
+        >
+          Beregn NOLO potentialet her
+        </h1>
+
         <div className="space-y-6">
           <Slider
             label="Samlet salg af vand og sodavand (DKK)"
@@ -31,9 +40,9 @@ function App() {
             min={0}
             max={100000}
             step={1000}
-            icon={<Beer className="w-6 h-6 text-blue-500" />}
+            icon={<Beer className="w-6 h-6 text-[#009D86]" />}
           />
-          
+
           <Slider
             label="Gennemsnitspris på vand og sodavand (DKK)"
             value={avgPrice}
@@ -41,9 +50,9 @@ function App() {
             min={1}
             max={100}
             step={1}
-            icon={<Beer className="w-6 h-6 text-green-500" />}
+            icon={<Beer className="w-6 h-6 text-[#009D86]" />}
           />
-          
+
           <Slider
             label="Pris på gennemsnitlig premium ikke-alkoholisk drik (DKK)"
             value={premiumPrice}
@@ -51,7 +60,7 @@ function App() {
             min={1}
             max={200}
             step={1}
-            icon={<Wine className="w-6 h-6 text-purple-500" />}
+            icon={<Wine className="w-6 h-6 text-[#009D86]" />}
           />
 
           <Slider
@@ -61,17 +70,26 @@ function App() {
             min={0}
             max={100}
             step={1}
-            icon={<Percent className="w-6 h-6 text-yellow-500" />}
+            icon={<Percent className="w-6 h-6 text-[#009D86]" />}
           />
         </div>
-        
-        <div className="mt-8 p-4 bg-blue-50 rounded-lg">
-          <h2 className="text-xl font-semibold mb-2 text-blue-800">Results</h2>
+
+        <div className="mt-8 p-4 bg-[#009D86] bg-opacity-10 rounded-lg">
+          <h2 className="text-xl font-semibold mb-2 text-[#009D86]">Results</h2>
           <p className="text-lg">
-            Estimeret salg: <span className="font-bold text-green-600">{newTotalSales.toLocaleString('da-DK', { style: 'currency', currency: 'DKK' })}</span>
+            Estimeret salg:{' '}
+            <span className="font-bold text-[#009D86]">
+              {newTotalSales.toLocaleString('da-DK', {
+                style: 'currency',
+                currency: 'DKK',
+              })}
+            </span>
           </p>
           <p className="text-lg">
-          Procentvis stigning: <span className="font-bold text-green-600">{percentageIncrease.toFixed(2)}%</span>
+            Procentvis stigning:{' '}
+            <span className="font-bold text-[#009D86]">
+              {percentageIncrease.toFixed(2)}%
+            </span>
           </p>
         </div>
       </div>
