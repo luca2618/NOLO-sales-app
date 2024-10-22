@@ -8,29 +8,56 @@ interface SliderProps {
   max: number;
   step: number;
   icon: React.ReactNode;
+  formatValue?: (value: number) => string;
+  convertFromDisplay?: (value: number) => number;
+  convertToDisplay?: (value: number) => number;
 }
 
-export const Slider: React.FC<SliderProps> = ({ label, value, onChange, min, max, step, icon }) => {
+export const Slider: React.FC<SliderProps> = ({
+  label,
+  value,
+  onChange,
+  min,
+  max,
+  step,
+  icon,
+  formatValue = (v) => v.toString(),
+  convertFromDisplay = (v) => v,
+  convertToDisplay = (v) => v,
+}) => {
   const rangeRef = useRef<HTMLInputElement>(null);
-  const [displayValue, setDisplayValue] = useState(value);
+  const [displayValue, setDisplayValue] = useState<string | number>(convertToDisplay(value));
+  const [isEditing, setIsEditing] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value === '' ? 0 : parseFloat(e.target.value);
-    if (!isNaN(newValue)) {
-      setDisplayValue(newValue);
-      onChange(Math.max(newValue, min));
+    const newValue = e.target.value;
+    setDisplayValue(newValue);
+  };
+
+  const handleInputBlur = () => {
+    setIsEditing(false);
+    const numericValue = displayValue === '' ? 0 : parseFloat(displayValue as string);
+    
+    if (isNaN(numericValue) || numericValue < 0) {
+      setDisplayValue(convertToDisplay(min));
+      onChange(min);
+    } else {
+      const baseValue = convertFromDisplay(numericValue);
+      onChange(baseValue);
     }
   };
 
   const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = parseFloat(e.target.value);
-    setDisplayValue(newValue);
+    setDisplayValue(convertToDisplay(newValue));
     onChange(newValue);
   };
 
   useEffect(() => {
-    setDisplayValue(value);
-  }, [value]);
+    if (!isEditing) {
+      setDisplayValue(convertToDisplay(value));
+    }
+  }, [value, isEditing, convertToDisplay]);
 
   useEffect(() => {
     if (rangeRef.current) {
@@ -63,20 +90,30 @@ export const Slider: React.FC<SliderProps> = ({ label, value, onChange, min, max
             className="relative z-10 w-full appearance-none bg-transparent"
           />
         </div>
-        <input
-          type="number"
-          value={displayValue === 0 ? '' : displayValue}
-          onChange={handleInputChange}
-          onBlur={() => {
-            if (displayValue < min) {
-              setDisplayValue(min);
-              onChange(min);
-            }
-          }}
-          min={min}
-          step={step}
-          className="w-20 px-2 py-1 text-right border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-opacity-50"
-        />
+        <div className="relative w-32">
+          {isEditing ? (
+            <input
+              type="text"
+              value={displayValue}
+              onChange={handleInputChange}
+              onBlur={handleInputBlur}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  (e.target as HTMLInputElement).blur();
+                }
+              }}
+              className="w-full px-2 py-1 text-right border border-[#009D86] rounded focus:outline-none focus:ring-2 focus:ring-[#009D86] focus:ring-opacity-50"
+              autoFocus
+            />
+          ) : (
+            <div
+              onClick={() => setIsEditing(true)}
+              className="w-full px-2 py-1 text-right border border-gray-300 rounded cursor-text hover:border-[#009D86] transition-colors"
+            >
+              {formatValue(typeof displayValue === 'string' ? 0 : displayValue)}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

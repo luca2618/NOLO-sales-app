@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Slider } from './components/Slider';
 import { Wine, Beer, Percent, DollarSign } from 'lucide-react';
 import { LanguageToggle } from './components/LanguageToggle';
+import { CurrencySelect } from './components/CurrencySelect';
 import { translations } from './translations';
+import { Currency, currencyConfigs, Language } from './types';
 
 function App() {
   const [totalSales, setTotalSales] = useState(10000);
@@ -11,7 +13,10 @@ function App() {
   const [conversion, setConversion] = useState(50);
   const [newTotalSales, setNewTotalSales] = useState(0);
   const [percentageIncrease, setPercentageIncrease] = useState(0);
-  const [language, setLanguage] = useState<'en' | 'dk'>('dk');
+  const [language, setLanguage] = useState<Language>('dk');
+  const [currency, setCurrency] = useState<Currency>('DKK');
+
+  const t = translations[language];
 
   useEffect(() => {
     const units = totalSales / avgPrice;
@@ -22,15 +27,32 @@ function App() {
     setPercentageIncrease(((newSales - totalSales) / totalSales) * 100);
   }, [totalSales, avgPrice, premiumPrice, conversion]);
 
-  const t = translations[language];
+  const formatCurrency = (value: number): string => {
+    return new Intl.NumberFormat(language === 'dk' ? 'da-DK' : 'en-US', {
+      style: 'currency',
+      currency: currency,
+      currencyDisplay: 'symbol',
+    }).format(value);
+  };
+
+  const convertToDisplayValue = (value: number): number => {
+    const { rate } = currencyConfigs[currency];
+    return value * rate;
+  };
+
+  const convertFromDisplayValue = (value: number): number => {
+    const { rate } = currencyConfigs[currency];
+    return value / rate;
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-4xl">
         <div className="flex flex-col items-center mb-8">
           <img src="logo.png" alt="NOLO Collective Logo" className="h-24 mb-4" />
-          <div className="w-full flex justify-end">
+          <div className="w-full flex justify-end items-center">
             <LanguageToggle language={language} setLanguage={setLanguage} />
+            <CurrencySelect currency={currency} setCurrency={setCurrency} />
           </div>
         </div>
         
@@ -44,33 +66,42 @@ function App() {
 
           <div className="space-y-6">
             <Slider
-              label={t.totalSales}
+              label={t.totalSales.replace('DKK', currencyConfigs[currency].symbol)}
               value={totalSales}
               onChange={setTotalSales}
               min={0}
               max={100000}
-              step={1000}
+              step={100}
               icon={<DollarSign className="w-6 h-6 text-[#009D86]" />}
+              formatValue={formatCurrency}
+              convertToDisplay={convertToDisplayValue}
+              convertFromDisplay={convertFromDisplayValue}
             />
 
             <Slider
-              label={t.avgPrice}
+              label={t.avgPrice.replace('DKK', currencyConfigs[currency].symbol)}
               value={avgPrice}
               onChange={setAvgPrice}
               min={1}
               max={100}
               step={1}
               icon={<Beer className="w-6 h-6 text-[#009D86]" />}
+              formatValue={formatCurrency}
+              convertToDisplay={convertToDisplayValue}
+              convertFromDisplay={convertFromDisplayValue}
             />
 
             <Slider
-              label={t.premiumPrice}
+              label={t.premiumPrice.replace('DKK', currencyConfigs[currency].symbol)}
               value={premiumPrice}
               onChange={setPremiumPrice}
               min={1}
               max={200}
               step={1}
               icon={<Wine className="w-6 h-6 text-[#009D86]" />}
+              formatValue={formatCurrency}
+              convertToDisplay={convertToDisplayValue}
+              convertFromDisplay={convertFromDisplayValue}
             />
 
             <Slider
@@ -81,6 +112,7 @@ function App() {
               max={100}
               step={1}
               icon={<Percent className="w-6 h-6 text-[#009D86]" />}
+              formatValue={(value) => `${value}%`}
             />
           </div>
 
@@ -91,10 +123,7 @@ function App() {
             <p className="text-lg">
               {t.estimatedSales}:{' '}
               <span className="font-bold text-[#009D86]">
-                {newTotalSales.toLocaleString(
-                  language === 'dk' ? 'da-DK' : 'en-US',
-                  { style: 'currency', currency: 'DKK' }
-                )}
+                {formatCurrency(convertToDisplayValue(newTotalSales))}
               </span>
             </p>
             <p className="text-lg">
