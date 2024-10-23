@@ -6,15 +6,31 @@ import { CurrencySelect } from './components/CurrencySelect';
 import { translations } from './translations';
 import { Currency, currencyConfigs, Language } from './types';
 
+function getInitialValues() {
+  const params = new URLSearchParams(window.location.search);
+  const urlCurrency = params.get('currency')?.toUpperCase();
+  const urlLanguage = params.get('lang')?.toLowerCase();
+
+  return {
+    currency: (urlCurrency && Object.keys(currencyConfigs).includes(urlCurrency) 
+      ? urlCurrency 
+      : 'DKK') as Currency,
+    language: (urlLanguage === 'en' || urlLanguage === 'dk' 
+      ? urlLanguage 
+      : 'dk') as Language
+  };
+}
+
 function App() {
+  const initialValues = getInitialValues();
   const [totalSales, setTotalSales] = useState(10000);
   const [avgPrice, setAvgPrice] = useState(20);
   const [premiumPrice, setPremiumPrice] = useState(50);
   const [conversion, setConversion] = useState(50);
   const [newTotalSales, setNewTotalSales] = useState(0);
   const [percentageIncrease, setPercentageIncrease] = useState(0);
-  const [language, setLanguage] = useState<Language>('dk');
-  const [currency, setCurrency] = useState<Currency>('DKK');
+  const [language, setLanguage] = useState<Language>(initialValues.language);
+  const [currency, setCurrency] = useState<Currency>(initialValues.currency);
 
   const t = translations[language];
 
@@ -26,6 +42,13 @@ function App() {
     setNewTotalSales(newSales);
     setPercentageIncrease(((newSales - totalSales) / totalSales) * 100);
   }, [totalSales, avgPrice, premiumPrice, conversion]);
+
+  useEffect(() => {
+    const newUrl = new URL(window.location.href);
+    newUrl.searchParams.set('currency', currency);
+    newUrl.searchParams.set('lang', language);
+    window.history.replaceState({}, '', newUrl.toString());
+  }, [currency, language]);
 
   const formatCurrency = (value: number): string => {
     return new Intl.NumberFormat(language === 'dk' ? 'da-DK' : 'en-US', {
