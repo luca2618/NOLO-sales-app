@@ -44,7 +44,7 @@ function App() {
   }, [language]);
 
   const formatNumber = (value: number): string => {
-    return new Intl.NumberFormat(language === 'dk' ? 'da-DK' : 'en-US').format(value);
+    return new Intl.NumberFormat(language === 'dk' ? 'da-DK' : 'en-US', {maximumFractionDigits: 2}).format(value);
   };
 
   return (
