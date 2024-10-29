@@ -107,7 +107,7 @@ function App() {
               max={100}
               step={1}
               icon={<Percent className="w-6 h-6 text-[#009D86]" />}
-              formatValue={(value) => `${value}%`}
+              formatValue={(value) => `${formatNumber(value)}%`}
             />
           </div>
 
