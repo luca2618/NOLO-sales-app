@@ -9,8 +9,6 @@ interface SliderProps {
   step: number;
   icon: React.ReactNode;
   formatValue?: (value: number) => string;
-  convertFromDisplay?: (value: number) => number;
-  convertToDisplay?: (value: number) => number;
 }
 
 export const Slider: React.FC<SliderProps> = ({
@@ -22,11 +20,9 @@ export const Slider: React.FC<SliderProps> = ({
   step,
   icon,
   formatValue = (v) => v.toString(),
-  convertFromDisplay = (v) => v,
-  convertToDisplay = (v) => v,
 }) => {
   const rangeRef = useRef<HTMLInputElement>(null);
-  const [displayValue, setDisplayValue] = useState<string | number>(convertToDisplay(value));
+  const [displayValue, setDisplayValue] = useState<string | number>(value);
   const [isEditing, setIsEditing] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,25 +35,24 @@ export const Slider: React.FC<SliderProps> = ({
     const numericValue = displayValue === '' ? 0 : parseFloat(displayValue as string);
     
     if (isNaN(numericValue) || numericValue < 0) {
-      setDisplayValue(convertToDisplay(min));
+      setDisplayValue(min);
       onChange(min);
     } else {
-      const baseValue = convertFromDisplay(numericValue);
-      onChange(baseValue);
+      onChange(numericValue);
     }
   };
 
   const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = parseFloat(e.target.value);
-    setDisplayValue(convertToDisplay(newValue));
+    setDisplayValue(newValue);
     onChange(newValue);
   };
 
   useEffect(() => {
     if (!isEditing) {
-      setDisplayValue(convertToDisplay(value));
+      setDisplayValue(value);
     }
-  }, [value, isEditing, convertToDisplay]);
+  }, [value, isEditing]);
 
   useEffect(() => {
     if (rangeRef.current) {
