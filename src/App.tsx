@@ -52,9 +52,9 @@ function App() {
       <div className="w-full max-w-4xl">
         <div className="flex flex-col items-center mb-8">
           <img src="logo.png" alt="NOLO Collective Logo" className="h-24 mb-4" />
-          <div className="w-full flex justify-end items-center">
-            <LanguageToggle language={language} setLanguage={setLanguage} />
-          </div>
+          {/* <div className="w-full flex justify-end items-center">
+             <LanguageToggle language={language} setLanguage={setLanguage} />
+          </div> */}
         </div>
         
         <div className="bg-white p-8 rounded-lg shadow-lg w-full">
