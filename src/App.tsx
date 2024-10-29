@@ -124,7 +124,7 @@ function App() {
             <p className="text-lg">
               {t.percentageIncrease}:{' '}
               <span className="font-bold text-[#009D86]">
-                {formatNumber(percentageIncrease)}%
+                {percentageIncrease.toFixed(0)}%
               </span>
             </p>
           </div>
