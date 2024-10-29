@@ -21,7 +21,7 @@ function App() {
   const [totalSales, setTotalSales] = useState(10000);
   const [avgPrice, setAvgPrice] = useState(20);
   const [premiumPrice, setPremiumPrice] = useState(50);
-  const [conversion, setConversion] = useState(50);
+  const [conversion, setConversion] = useState(25);
   const [newTotalSales, setNewTotalSales] = useState(0);
   const [percentageIncrease, setPercentageIncrease] = useState(0);
   const [language, setLanguage] = useState<Language>(initialValues.language);
