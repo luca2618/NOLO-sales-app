@@ -14,7 +14,7 @@ export const translations = {
     totalSales: 'Samlet salg af vand og sodavand',
     avgPrice: 'Gennemsnitspris på vand og sodavand',
     premiumPrice: 'Pris på gennemsnitlig premium ikke-alkoholisk drik',
-    conversion: 'Konversion af salg (%)',
+    conversion: 'Konvertering af salg (%)',
     results: 'Resultater',
     estimatedSales: 'Estimeret salg',
     percentageIncrease: 'Procentvis stigning',
