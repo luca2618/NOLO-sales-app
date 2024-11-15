@@ -111,7 +111,7 @@ function App() {
             />
           </div>
 
-          <div className="mt-8 p-4 bg-[var(--bg1-color)] bg-opacity-10 rounded-lg">
+          <div className="mt-8 p-4 rounded-lg" style={{ backgroundColor: "var(--box-color)"}}>
             <h2 className="text-xl font-semibold mb-2 text-[var(--text-color)]">
               {t.results}
             </h2>

@@ -2,13 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* NOLO colors */
 :root {
   --text-color: #080804;
   --slider-color: #080804;
   --bg1-color: #f3f4f6;
   --bg2-color: #ffffff;
+  --box-color: rgba(0, 0, 0, 0.1);
 }
+
+/* Botivo colors */
+/* :root {
+  --text-color: #080804;
+  --slider-color: #080804;
+  --bg1-color: #ffc43c;
+  --bg2-color: #fffef5;
+  --box-color: rgba(255, 196, 60, 0.3);
+} */
 
 /* Custom styles for the range input */
 input[type='range'] {
