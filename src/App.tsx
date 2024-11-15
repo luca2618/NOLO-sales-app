@@ -60,7 +60,7 @@ function App() {
         <div className="bg-white p-8 rounded-lg shadow-lg w-full">
           <h1
             className="text-3xl font-bold mb-6 text-center"
-            style={{ color: '#009D86' }}
+            style={{ color: '#080404' }}
           >
             {t.title}
           </h1>
@@ -73,7 +73,7 @@ function App() {
               min={0}
               max={100000}
               step={100}
-              icon={<DollarSign className="w-6 h-6 text-[#009D86]" />}
+              icon={<DollarSign className="w-6 h-6 text-[#080404]" />}
               formatValue={formatNumber}
             />
 
@@ -84,7 +84,7 @@ function App() {
               min={1}
               max={100}
               step={1}
-              icon={<Beer className="w-6 h-6 text-[#009D86]" />}
+              icon={<Beer className="w-6 h-6 text-[#080404]" />}
               formatValue={formatNumber}
             />
 
@@ -95,7 +95,7 @@ function App() {
               min={1}
               max={200}
               step={1}
-              icon={<Wine className="w-6 h-6 text-[#009D86]" />}
+              icon={<Wine className="w-6 h-6 text-[#080404]" />}
               formatValue={formatNumber}
             />
 
@@ -106,24 +106,24 @@ function App() {
               min={0}
               max={100}
               step={1}
-              icon={<Percent className="w-6 h-6 text-[#009D86]" />}
+              icon={<Percent className="w-6 h-6 text-[#080404]" />}
               formatValue={(value) => `${formatNumber(value)}%`}
             />
           </div>
 
-          <div className="mt-8 p-4 bg-[#009D86] bg-opacity-10 rounded-lg">
-            <h2 className="text-xl font-semibold mb-2 text-[#009D86]">
+          <div className="mt-8 p-4 bg-[#080404] bg-opacity-10 rounded-lg">
+            <h2 className="text-xl font-semibold mb-2 text-[#080404]">
               {t.results}
             </h2>
             <p className="text-lg">
               {t.estimatedSales}:{' '}
-              <span className="font-bold text-[#009D86]">
+              <span className="font-bold text-[#080404]">
                 {formatNumber(newTotalSales)}
               </span>
             </p>
             <p className="text-lg">
               {t.percentageIncrease}:{' '}
-              <span className="font-bold text-[#009D86]">
+              <span className="font-bold text-[#080404]">
                 {formatNumber(percentageIncrease)}%
               </span>
             </p>
