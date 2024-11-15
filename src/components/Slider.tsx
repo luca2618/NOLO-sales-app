@@ -65,13 +65,13 @@ export const Slider: React.FC<SliderProps> = ({
     <div className="space-y-2">
       <div className="flex items-center space-x-2">
         {icon}
-        <label className="text-sm font-medium text-gray-700">{label}</label>
+        <label className="text-sm font-medium text-[var(--text-color)]">{label}</label>
       </div>
       <div className="flex items-center space-x-4">
         <div className="relative w-full">
           <div className="absolute top-1/2 left-0 right-0 -mt-1 h-2 bg-gray-200 rounded-full pointer-events-none"></div>
           <div 
-            className="absolute top-1/2 left-0 -mt-1 h-2 bg-[#080404] rounded-full pointer-events-none" 
+            className="absolute top-1/2 left-0 -mt-1 h-2 bg-[var(--slider-color)] rounded-full pointer-events-none" 
             style={{ width: `${((Math.min(value, max) - min) / (max - min)) * 100}%` }}
           ></div>
           <input
@@ -97,13 +97,13 @@ export const Slider: React.FC<SliderProps> = ({
                   (e.target as HTMLInputElement).blur();
                 }
               }}
-              className="w-full px-2 py-1 text-right border border-[#080404] rounded focus:outline-none focus:ring-2 focus:ring-[#080404] focus:ring-opacity-50"
+              className="w-full px-2 py-1 text-right border border-[var(--slider-color)] rounded focus:outline-none focus:ring-2 focus:ring-[var(--slider-color)] focus:ring-opacity-50"
               autoFocus
             />
           ) : (
             <div
               onClick={() => setIsEditing(true)}
-              className="w-full px-2 py-1 text-right border border-gray-300 rounded cursor-text hover:border-[#080404] transition-colors"
+              className="w-full px-2 py-1 text-right border border-gray-300 rounded cursor-text hover:border-[var(--slider-color)] transition-colors"
             >
               {formatValue(typeof displayValue === 'string' ? 0 : displayValue)}
             </div>

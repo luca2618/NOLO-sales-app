@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+
+:root {
+  --text-color: #080804;
+  --slider-color: #080804;
+  --bg1-color: #f3f4f6;
+  --bg2-color: #ffffff;
+}
+
 /* Custom styles for the range input */
 input[type='range'] {
   -webkit-appearance: none;
@@ -20,7 +28,7 @@ input[type='range']::-webkit-slider-thumb {
   height: 24px;
   width: 24px;
   border-radius: 50%;
-  background: #080404;
+  background: var(--slider-color);
   cursor: pointer;
   margin-top: -10px; /* Adjust for the new track height */
   box-shadow: 0 0 2px 0 #555;
@@ -32,7 +40,7 @@ input[type='range']::-moz-range-thumb {
   height: 24px;
   width: 24px;
   border-radius: 50%;
-  background: #080404;
+  background: var(--slider-color);
   cursor: pointer;
   box-shadow: 0 0 2px 0 #555;
   position: relative;
@@ -43,7 +51,7 @@ input[type='range']::-ms-thumb {
   height: 24px;
   width: 24px;
   border-radius: 50%;
-  background: #080404;
+  background: var(--slider-color);
   cursor: pointer;
   box-shadow: 0 0 2px 0 #555;
   position: relative;
@@ -77,7 +85,7 @@ input[type='range']::-ms-track {
 
 /* Custom styles for the number input */
 input[type='number']:focus {
-  border-color: #080404;
+  border-color: var(--slider-color);
   box-shadow: 0 0 0 2px rgba(0, 157, 134, 0.2);
 }
 

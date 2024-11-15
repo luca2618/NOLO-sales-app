@@ -48,7 +48,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-[var(--bg1-color)] flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-4xl">
         <div className="flex flex-col items-center mb-8">
           <img src="logo.png" alt="NOLO Collective Logo" className="h-24 mb-4" />
@@ -57,10 +57,10 @@ function App() {
           </div> */}
         </div>
         
-        <div className="bg-white p-8 rounded-lg shadow-lg w-full">
+        <div className="bg-[var(--bg2-color)] p-8 rounded-lg shadow-lg w-full">
           <h1
             className="text-3xl font-bold mb-6 text-center"
-            style={{ color: '#009D86' }}
+            style={{ color: 'var(--text-color)' }}
           >
             {t.title}
           </h1>
@@ -73,7 +73,7 @@ function App() {
               min={0}
               max={100000}
               step={100}
-              icon={<DollarSign className="w-6 h-6 text-[#009D86]" />}
+              icon={<DollarSign className="w-6 h-6 text-[var(--text-color)]" />}
               formatValue={formatNumber}
             />
 
@@ -84,7 +84,7 @@ function App() {
               min={1}
               max={100}
               step={1}
-              icon={<Beer className="w-6 h-6 text-[#009D86]" />}
+              icon={<Beer className="w-6 h-6 text-[var(--text-color)]" />}
               formatValue={formatNumber}
             />
 
@@ -95,7 +95,7 @@ function App() {
               min={1}
               max={200}
               step={1}
-              icon={<Wine className="w-6 h-6 text-[#009D86]" />}
+              icon={<Wine className="w-6 h-6 text-[var(--text-color)]" />}
               formatValue={formatNumber}
             />
 
@@ -106,24 +106,24 @@ function App() {
               min={0}
               max={100}
               step={1}
-              icon={<Percent className="w-6 h-6 text-[#009D86]" />}
+              icon={<Percent className="w-6 h-6 text-[var(--text-color)]" />}
               formatValue={(value) => `${formatNumber(value)}%`}
             />
           </div>
 
-          <div className="mt-8 p-4 bg-[#009D86] bg-opacity-10 rounded-lg">
-            <h2 className="text-xl font-semibold mb-2 text-[#009D86]">
+          <div className="mt-8 p-4 bg-[var(--bg1-color)] bg-opacity-10 rounded-lg">
+            <h2 className="text-xl font-semibold mb-2 text-[var(--text-color)]">
               {t.results}
             </h2>
-            <p className="text-lg">
+            <p className="text-lg text-[var(--text-color)]">
               {t.estimatedSales}:{' '}
-              <span className="font-bold text-[#009D86]">
+              <span className="font-bold text-[var(--text-color)]">
                 {formatNumber(newTotalSales)}
               </span>
             </p>
-            <p className="text-lg">
+            <p className="text-lg text-[var(--text-color)]">
               {t.percentageIncrease}:{' '}
-              <span className="font-bold text-[#009D86]">
+              <span className="font-bold text-[var(--text-color)]">
                 {formatNumber(percentageIncrease)}%
               </span>
             </p>
