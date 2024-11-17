@@ -12,7 +12,7 @@ function getInitialValues() {
   return {
     language: (urlLanguage === 'en' || urlLanguage === 'dk' 
       ? urlLanguage 
-      : 'dk') as Language
+      : 'en') as Language
   };
 }
 
@@ -51,7 +51,7 @@ function App() {
     <div className="min-h-screen bg-[var(--bg1-color)] flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-4xl">
         <div className="flex flex-col items-center mb-8">
-          <img src="botivo.png" alt="NOLO Collective Logo" className="h-24 mb-4" />
+          <img src="botivo.png" height={49} width={240} alt="Botivo Logo" className="h-24 mb-4" />
           {/* <div className="w-full flex justify-end items-center">
              <LanguageToggle language={language} setLanguage={setLanguage} />
           </div> */}
@@ -60,7 +60,10 @@ function App() {
         <div className="bg-[var(--bg2-color)] p-8 rounded-lg shadow-lg w-full">
           <h1
             className="text-3xl font-bold mb-6 text-center"
-            style={{ color: 'var(--text-color)' }}
+            style={{
+              color: 'var(--text-color)',
+              fontFamily: 'Queenscondensed, sans-serif',
+            }}
           >
             {t.title}
           </h1>

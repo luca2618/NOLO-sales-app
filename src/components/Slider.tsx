@@ -65,7 +65,9 @@ export const Slider: React.FC<SliderProps> = ({
     <div className="space-y-2">
       <div className="flex items-center space-x-2">
         {icon}
-        <label className="text-sm font-medium text-[var(--text-color)]">{label}</label>
+        <label className="text-sm font-medium text-[var(--text-color)]" style={{
+              fontFamily: 'Suisseintl, sans-serif',
+            }}>{label}</label>
       </div>
       <div className="flex items-center space-x-4">
         <div className="relative w-full">
