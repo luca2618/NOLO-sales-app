@@ -51,7 +51,7 @@ function App() {
     <div className="min-h-screen bg-[var(--bg1-color)] flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-4xl">
         <div className="flex flex-col items-center mb-8">
-          <img src="logo.png" alt="NOLO Collective Logo" className="h-24 mb-4" />
+          <img src="botivo.png" alt="NOLO Collective Logo" className="h-24 mb-4" />
           {/* <div className="w-full flex justify-end items-center">
              <LanguageToggle language={language} setLanguage={setLanguage} />
           </div> */}
