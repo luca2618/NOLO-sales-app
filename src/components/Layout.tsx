@@ -14,17 +14,17 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
         className="absolute top-[8%] left-[8%] w-0 md:w-64 opacity-90"
       />
       <img
-        src="public/JADA.png"
+        src="JADA.png"
         alt=""
         className="absolute top-[50%] left-[-1%] w-0 md:w-48 opacity-90"
       />
       <img
-        src="public/BABAR.png"
+        src="BABAR.png"
         alt=""
         className="absolute top-[5%] left-[82%] w-0 md:w-64 opacity-90"
       />
       <img
-        src="public/DAISY.png"
+        src="DAISY.png"
         alt=""
         className="absolute top-[65%] left-[85%] w-0 md:w-48 opacity-90"
       />
