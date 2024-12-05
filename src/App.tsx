@@ -50,8 +50,8 @@ function App() {
   return (
     <div className="min-h-screen bg-[var(--bg1-color)] flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-4xl">
-        <div className="flex flex-col items-center mb-8">
-          <img src="botivo.png" height={280} width={500} alt="Botivo Logo"/>
+        <div className="flex flex-col items-center h-28 md:h-64 lg:h-48">
+          <img src="botivo.png" className = {"h-full object-contain"}  alt="Botivo Logo"/>
           {/* <div className="w-full flex justify-end items-center">
              <LanguageToggle language={language} setLanguage={setLanguage} />
           </div> */}
@@ -75,7 +75,7 @@ function App() {
               onChange={setTotalSales}
               min={0}
               max={100000}
-              step={100}
+              step={500}
               icon={<DollarSign className="w-6 h-6 text-[var(--text-color)]" />}
               formatValue={formatNumber}
             />
@@ -85,7 +85,7 @@ function App() {
               value={avgPrice}
               onChange={setAvgPrice}
               min={1}
-              max={100}
+              max={20}
               step={1}
               icon={<Beer className="w-6 h-6 text-[var(--text-color)]" />}
               formatValue={formatNumber}
@@ -96,7 +96,7 @@ function App() {
               value={premiumPrice}
               onChange={setPremiumPrice}
               min={1}
-              max={200}
+              max={40}
               step={1}
               icon={<Wine className="w-6 h-6 text-[var(--text-color)]" />}
               formatValue={formatNumber}

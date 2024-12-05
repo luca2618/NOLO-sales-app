@@ -1,10 +1,10 @@
 export const translations = {
   en: {
     title: 'Calculate the potential of offering Botivo',
-    totalSales: 'Total sales of water and soft drinks',
-    avgPrice: 'Average price of water and soft drinks',
-    premiumPrice: 'Price of average premium non-alcoholic drink',
-    conversion: 'Sales conversion (%)',
+    totalSales: 'Total sales of soft drinks per year',
+    avgPrice: 'Average price of soft drinks',
+    premiumPrice: 'Price of average premium non-alcoholic drinks',
+    conversion: 'Conversion rate from soft drinks to premium non-alcoholic drinks',
     results: 'Results',
     estimatedSales: 'Estimated sales',
     percentageIncrease: 'Percentage increase',
