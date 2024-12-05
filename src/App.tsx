@@ -4,6 +4,7 @@ import { Wine, Beer, Percent, DollarSign } from 'lucide-react';
 import { LanguageToggle } from './components/LanguageToggle';
 import { translations } from './translations';
 import { Language } from './types';
+import { Layout } from './components/Layout';
 
 function getInitialValues() {
   const params = new URLSearchParams(window.location.search);
@@ -48,16 +49,13 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--bg1-color)] flex flex-col items-center justify-center p-4">
-      <div className="w-full max-w-4xl">
+    <Layout>
+      <div className="w-full max-w-4xl relative z-10">
         <div className="flex flex-col items-center h-28 md:h-64 lg:h-48">
-          <img src="botivo.png" className = {"h-full object-contain"}  alt="Botivo Logo"/>
-          {/* <div className="w-full flex justify-end items-center">
-             <LanguageToggle language={language} setLanguage={setLanguage} />
-          </div> */}
+          <img src="botivo.png" className="h-full object-contain" alt="Botivo Logo"/>
         </div>
         
-        <div className="bg-[var(--bg2-color)] p-8 rounded-lg shadow-lg w-full">
+        <div className="bg-[var(--bg2-color)] p-8 rounded-lg shadow-lg w-full backdrop-blur-sm bg-opacity-95">
           <h1
             className="text-3xl font-bold mb-6 text-center"
             style={{
@@ -133,7 +131,7 @@ function App() {
           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 }
 
