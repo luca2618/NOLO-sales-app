@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Slider } from './components/Slider';
-import { Wine, Beer, Percent, DollarSign } from 'lucide-react';
+import { Wine, Beer, Percent, PoundSterling } from 'lucide-react';
 import { LanguageToggle } from './components/LanguageToggle';
 import { translations } from './translations';
 import { Language } from './types';
@@ -45,7 +45,7 @@ function App() {
   }, [language]);
 
   const formatNumber = (value: number): string => {
-    return new Intl.NumberFormat(language === 'dk' ? 'da-DK' : 'en-US', {maximumFractionDigits: 2}).format(value);
+    return new Intl.NumberFormat(language === 'dk' ? 'da-DK' : 'en-US', {maximumFractionDigits: 2,minimumFractionDigits: 1}).format(value);
   };
 
   return (
@@ -74,7 +74,7 @@ function App() {
               min={0}
               max={100000}
               step={500}
-              icon={<DollarSign className="w-6 h-6 text-[var(--text-color)]" />}
+              icon={<PoundSterling className="w-6 h-6 text-[var(--text-color)]" />}
               formatValue={formatNumber}
             />
 
@@ -83,8 +83,8 @@ function App() {
               value={avgPrice}
               onChange={setAvgPrice}
               min={1}
-              max={20}
-              step={1}
+              max={15}
+              step={0.5}
               icon={<Beer className="w-6 h-6 text-[var(--text-color)]" />}
               formatValue={formatNumber}
             />
@@ -94,8 +94,8 @@ function App() {
               value={premiumPrice}
               onChange={setPremiumPrice}
               min={1}
-              max={40}
-              step={1}
+              max={30}
+              step={0.5}
               icon={<Wine className="w-6 h-6 text-[var(--text-color)]" />}
               formatValue={formatNumber}
             />
@@ -108,7 +108,7 @@ function App() {
               max={100}
               step={1}
               icon={<Percent className="w-6 h-6 text-[var(--text-color)]" />}
-              formatValue={(value) => `${formatNumber(value)}%`}
+              formatValue={(value) => `${value}%`}
             />
           </div>
 
