@@ -8,6 +8,7 @@ export const translations = {
     results: 'Results',
     estimatedSales: 'New estimated total sales per month',
     percentageIncrease: 'Percentage increase in revenue',
+    totalIncrease: 'Total increase in revenue',
   },
   dk: {
     title: 'Beregn potentialet her',
@@ -18,5 +19,6 @@ export const translations = {
     results: 'Resultater',
     estimatedSales: 'Estimeret salg',
     percentageIncrease: 'Procentvis stigning',
+    totalIncrease: 'Samlet stigning i omsætning',
   },
 };

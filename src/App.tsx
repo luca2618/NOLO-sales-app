@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Slider } from './components/Slider';
-import { Wine, Beer, Percent, PoundSterling } from 'lucide-react';
-import { LanguageToggle } from './components/LanguageToggle';
 import { translations } from './translations';
 import { Language } from './types';
 import { Layout } from './components/Layout';
+import { Calculator } from './components/Calculator.tsx';
+import { ResultsPanel } from './components/ResultsPanel.tsx';
 
 function getInitialValues() {
   const params = new URLSearchParams(window.location.search);
@@ -44,10 +43,6 @@ function App() {
     window.history.replaceState({}, '', newUrl.toString());
   }, [language]);
 
-  const formatNumber = (value: number): string => {
-    return new Intl.NumberFormat(language === 'dk' ? 'da-DK' : 'en-US', {maximumFractionDigits: 2,minimumFractionDigits: 1}).format(value);
-  };
-
   return (
     <Layout>
       <div className="w-full max-w-4xl relative z-10">
@@ -66,69 +61,24 @@ function App() {
             {t.title}
           </h1>
 
-          <div className="space-y-6">
-            <Slider
-              label={t.totalSales}
-              value={totalSales}
-              onChange={setTotalSales}
-              min={0}
-              max={100000}
-              step={500}
-              icon={<PoundSterling className="w-6 h-6 text-[var(--text-color)]" />}
-              formatValue={formatNumber}
-            />
+          <Calculator
+            totalSales={totalSales}
+            avgPrice={avgPrice}
+            premiumPrice={premiumPrice}
+            conversion={conversion}
+            onTotalSalesChange={setTotalSales}
+            onAvgPriceChange={setAvgPrice}
+            onPremiumPriceChange={setPremiumPrice}
+            onConversionChange={setConversion}
+            language={language}
+          />
 
-            <Slider
-              label={t.avgPrice}
-              value={avgPrice}
-              onChange={setAvgPrice}
-              min={1}
-              max={15}
-              step={0.5}
-              icon={<Beer className="w-6 h-6 text-[var(--text-color)]" />}
-              formatValue={formatNumber}
-            />
-
-            <Slider
-              label={t.premiumPrice}
-              value={premiumPrice}
-              onChange={setPremiumPrice}
-              min={1}
-              max={30}
-              step={0.5}
-              icon={<Wine className="w-6 h-6 text-[var(--text-color)]" />}
-              formatValue={formatNumber}
-            />
-
-            <Slider
-              label={t.conversion}
-              value={conversion}
-              onChange={setConversion}
-              min={0}
-              max={100}
-              step={1}
-              icon={<Percent className="w-6 h-6 text-[var(--text-color)]" />}
-              formatValue={(value) => `${value}%`}
-            />
-          </div>
-
-          <div className="mt-8 p-4 rounded-lg" style={{ backgroundColor: "var(--box-color)"}}>
-            <h2 className="text-xl font-semibold mb-2 text-[var(--text-color)]">
-              {t.results}
-            </h2>
-            <p className="text-lg text-[var(--text-color)]">
-              {t.estimatedSales}:{' '}
-              <span className="font-bold text-[var(--text-color)]">
-                {formatNumber(newTotalSales)}
-              </span>
-            </p>
-            <p className="text-lg text-[var(--text-color)]">
-              {t.percentageIncrease}:{' '}
-              <span className="font-bold text-[var(--text-color)]">
-                {formatNumber(percentageIncrease)}%
-              </span>
-            </p>
-          </div>
+          <ResultsPanel
+            newTotalSales={newTotalSales}
+            totalSales={totalSales}
+            percentageIncrease={percentageIncrease}
+            language={language}
+          />
         </div>
       </div>
     </Layout>
