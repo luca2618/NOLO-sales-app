@@ -40,7 +40,7 @@ export const Calculator: React.FC<CalculatorProps> = ({
         max={50000}
         step={500}
         icon={<PoundSterling className="w-6 h-6 text-[var(--text-color)]" />}
-        formatValue={(value) => formatCurrency(value, language)}
+        formatValue={(value) => formatCurrency(value, language, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}
       />
 
       <Slider
@@ -51,7 +51,7 @@ export const Calculator: React.FC<CalculatorProps> = ({
         max={15}
         step={0.5}
         icon={<Beer className="w-6 h-6 text-[var(--text-color)]" />}
-        formatValue={(value) => formatCurrency(value, language)}
+        formatValue={(value) => formatCurrency(value, language, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
       />
 
       <Slider
@@ -62,7 +62,7 @@ export const Calculator: React.FC<CalculatorProps> = ({
         max={30}
         step={0.5}
         icon={<Wine className="w-6 h-6 text-[var(--text-color)]" />}
-        formatValue={(value) => formatCurrency(value, language)}
+        formatValue={(value) => formatCurrency(value, language,  { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
       />
 
       <Slider
@@ -73,7 +73,7 @@ export const Calculator: React.FC<CalculatorProps> = ({
         max={100}
         step={1}
         icon={<Percent className="w-6 h-6 text-[var(--text-color)]" />}
-        formatValue={(value) => formatPercentage(value, language)}
+        formatValue={(value) => formatPercentage(value, language, { minimumFractionDigits: 0, maximumFractionDigits: 0})}
       />
     </div>
   );

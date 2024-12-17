@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { translations } from './translations';
 import { Language } from './types';
 import { Layout } from './components/Layout';
-import { Calculator } from './components/Calculator.tsx';
-import { ResultsPanel } from './components/ResultsPanel.tsx';
+import { Calculator } from './components/Calculator';
+import { ResultsPanel } from './components/ResultsPanel';
 
 function getInitialValues() {
   const params = new URLSearchParams(window.location.search);

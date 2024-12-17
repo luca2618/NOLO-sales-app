@@ -26,19 +26,19 @@ export const ResultsPanel: React.FC<ResultsPanelProps> = ({
       <p className="text-lg text-[var(--text-color)]">
         {t.estimatedSales}:{' '}
         <span className="font-bold text-[var(--text-color)]">
-          {formatCurrency(newTotalSales, language)}
+          {formatCurrency(newTotalSales, language, { minimumFractionDigits: 0, maximumFractionDigits: 0})}
         </span>
       </p>
       <p className="text-lg text-[var(--text-color)]">
         {t.percentageIncrease}:{' '}
         <span className="font-bold text-[var(--text-color)]">
-          {formatPercentage(percentageIncrease, language)}
+          {formatPercentage(percentageIncrease, language, { minimumFractionDigits: 0, maximumFractionDigits: 0})}
         </span>
       </p>
       <p className="text-lg text-[var(--text-color)]">
         {t.totalIncrease}:{' '}
         <span className="font-bold text-[var(--text-color)]">
-          {formatCurrency(newTotalSales - totalSales, language)}
+          {formatCurrency(newTotalSales - totalSales, language, { minimumFractionDigits: 0, maximumFractionDigits: 0})}
         </span>
       </p>
     </div>
